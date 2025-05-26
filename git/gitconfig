@@ -1,0 +1,60 @@
+[user]
+  name = KD.JOMO
+  email = your@email.com
+
+[color]
+  ui = auto
+
+[color "status"]
+  added = green
+  changed = yellow
+  untracked = red bold
+
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+
+[gui]
+  encoding = utf-8
+
+[core]
+  quotepath = false
+  preloadindex = true
+  fscache = true
+  editor = nvim
+  autocrlf = false
+  excludesfile = ~/.gitignore_global
+
+[merge]
+  ff = false
+  tool = vimdiff
+
+[pull]
+  ff = only
+
+[diff "pandoc"]
+  textconv = pandoc --to-markdown
+  prompt = false
+
+[credential]
+  helper = manager-core
+
+#[rebase]
+# autosquash = true
+#-> rebase 理解したら使う
+
+[alias]
+  wdiff = diff --word-diff=color --unified=1
+  ch = checkout
+  gr = log --graph --oneline --all --decorate=short
+  br = branch
+  sw = switch
+  co = commit
+  st = status
+  aa = add -A
+  amend = commit --amend --no-edit
+  last = log -1 HEAD
+
+[init]
+  defaultbranch = main

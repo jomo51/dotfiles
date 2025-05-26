@@ -1,0 +1,17 @@
+# OS jank
+.DS_Store
+Thumbs.db
+
+# Backup
+*.bak
+*.tmp
+
+# Vim/Neovim swap files
+*.swp
+*.swo
+*.undo
+
+# Office temporary recovery files
+~$*
+~WRL*.tmp
+
