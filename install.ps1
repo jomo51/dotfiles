@@ -8,6 +8,11 @@ cd ~/dotfiles
 #>
 
 $ErrorActionPreference = "Stop"
+# 管理者権限チェック
+if (-not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole("Administrator")) {
+    Write-Host "⚠️ 管理者権限で実行していない場合、シンボリックリンク作成が失敗する可能性があります。"
+    Write-Host "💡 PowerShellを『管理者として実行』または『開発者モードを有効化』してください。`n"
+}
 
 Write-Host "`n🛠 dotfiles install script start...`n"
 
