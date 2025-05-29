@@ -120,5 +120,28 @@ if (-not (Get-Command nvim -ErrorAction SilentlyContinue)) {
 if (-not (Get-Command nvim -ErrorAction SilentlyContinue)) {
 }
 
+# 9. PSES: リリース板zipの取得と展開
+Write-Host "`n🧠 Checking PowerShellEditorServices..."
+$psesZipUrl = "https://github.com/PowerShell/PowerShellEditorServices/releases/download/v4.3.0/PowerShellEditorServices.zip"
+$psesRoot = "$env:DOTFILES_HOME\\tools\\PSES"
+$psesTarget = "$psesRoot\\PowerShellEditorServices"
+$psesZipPath = "$env:TEMP\\PowerShellEditorServices.zip"
+
+if (-not (Test-Path "$psesTarget\\PowerShellEditorServices.psd1")) {
+    Write-Host "📥 Downloading PowerShellEditorServices v4.3.0..."
+    Invoke-WebRequest -Uri $psesZipUrl -OutFile $psesZipPath
+
+    if (-not (Test-Path $psesRoot)) {
+        New-Item -ItemType Directory -Path $psesRoot | Out-Null
+    }
+
+    Write-Host "📦 Extracting..."
+    Expand-Archive -Path $psesZipPath -DestinationPath $psesTarget -Force
+
+    Write-Host "✅ PowerShellEditorServices installed at: $psesTarget"
+} else {
+    Write-Host "✅ PowerShellEditorServices already present."
+}
+
 Write-Host "`n✅ dotfiles setup complete!`n"
 
