@@ -28,7 +28,7 @@ function New-SymlinkWithBackup {
   //親パスのチェックと再作成
   $parent = Split-Path -Parent $Link
     if (-not (Test-Path $parent)) {
-      New-Item -ItemType Direcory -Path $Parent
+      New-Item -ItemType Directory -Path $Parent
     }
 
   //リンク作成
@@ -98,6 +98,21 @@ if (Test-Path $extensionsFile) {
   Write-Host "✅ Extensions installed."
 } else {
   Write-Host "⚠️ No extensions.txt found."
+}
+
+# 8. Neovimインストールチェック
+Write-Host "`n💡 Checking Neovim installation..."
+
+if (-not (Get-Command nvim -ErrorAction SilentlyContinue)) {
+    Write-Host "⚠️ Neovim not found. You can install it via:"
+    Write-Host "   winget install Neovim.Neovim"
+    Write-Host "📦 Installing Neovim via winget..."
+    winget install Neovim.Neovim -s winget
+} else {
+    $version = nvim --version | Select-String -Pattern "^NVIM v"
+    Write-Host "✅ Neovim installed: $($version.Line)"
+}
+if (-not (Get-Command nvim -ErrorAction SilentlyContinue)) {
 }
 
 Write-Host "`n✅ dotfiles setup complete!`n"
