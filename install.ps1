@@ -7,6 +7,8 @@
         ./install.ps1
 #>
 
+$ErrorActionPreference = "Stop"
+
 Write-Host "`n🛠 dotfiles install script start...`n"
 
 # 1. 環境変数を設定

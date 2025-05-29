@@ -58,46 +58,20 @@ return{
     event = "BufRead",
   },
 
-  -- nvim-treesitter
-  --{
-  --  "nvim-treesitter/nvim-treesitter",
-  --  event = { "BufRead", "BufNewFile", "InsertEnter" },
-  --  build = ":TSUpdate",
-  --  config = function()
-  --    local configs = require("nvim-treesitter.configs")
-  --    configs.setup({
-  --      ensure_installed = {
-  --        "awk",
-  --        "bash",
-  --        "comment",
-  --        "c",
-  --        "css",
-  --        "csv",
-  --        "diff",
-  --        "gpg",
-  --        "html",
-  --        "htmldjango",
-  --        "javascript",
-  --        "json",
-  --        "lua",
-  --        "markdown",
-  --        "python",
-  --        "rust",
-  --        "sql",
-  --        "ssh_config",
-  --        "tmux",
-  --        "toml",
-  --        "vim",
-  --        "xml",
-  --        "yaml",
-  --        "regex",
-  --        "vimdoc",
-  --      },
-  --      sync_install = false,
-  --      auto_install = true,
-  --      highlight = { enable = true },
-  --      indent = { enable = true },
-  --    })
-  --  end,
-  --},
+  --カッコ補完
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = true,
+  },
+
+  --lsp周りのやつ
+  -- lua/plugins/plugins_lazy.lua
+  {
+    "neovim/nvim-lspconfig",
+    lazy = false,
+    config = function()
+      require("plugins.lsp.powershell").setup()
+    end,
+  },
 }

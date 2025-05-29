@@ -1,0 +1,64 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "ctrl+j",
+        "command": "selectNextSuggestion",
+        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "selectPrevSuggestion",
+        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "workbench.action.quickOpenSelectNext",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.quickOpenSelectPrevious",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "ctrl+;",
+        "command": "workbench.action.terminal.focus",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+;",
+        "command": "workbench.action.focusFirstEditorGroup",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+shift+j",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+oem_plus",
+        "command": "editor.action.fontZoomIn"
+    },
+    {
+        "key": "ctrl+oem_plus",
+        "command": "-workbench.action.zoomIn"
+    },
+    {
+        "key": "ctrl+oem_minus",
+        "command": "editor.action.fontZoomOut"
+    },
+    {
+        "key": "ctrl+oem_minus",
+        "command": "-workbench.action.zoomOut"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "editor.action.insertLineAfter",
+        "when": "config.coboleditor.xedit_keymap && !inSnippetMode && editorLangId =~ /^COBOL$|^BITLANG-COBOL$|^ACUCOBOL$|^RMCOBOL$|^ILECOBOL$|^COBOLIT$/"
+    },
+    {
+        "key": "ctrl+j",
+        "command": "-editor.action.insertLineAfter",
+        "when": "config.coboleditor.xedit_keymap && !inSnippetMode && editorLangId =~ /^COBOL$|^BITLANG-COBOL$|^ACUCOBOL$|^RMCOBOL$|^ILECOBOL$|^COBOLIT$/"
+    }
+]

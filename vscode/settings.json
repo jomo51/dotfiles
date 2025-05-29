@@ -1,0 +1,290 @@
+{
+    "files.autoGuessEncoding": true,
+    "files.eol":"\n",
+
+    //sugest enter disable
+    "editor.acceptSuggestionOnEnter": "off",
+
+    //vim setting
+    "vim.hlsearch": true,       //incremtal serach high light
+    "vim.visualstar": true,
+    "vim.highlightedyank.enable": true,
+    "vim.searchHighlightColor": "red",
+    "vim.easymotion": true,
+    "vim.useCtrlKeys": true,
+    //vim Switch IME
+    "vim.autoSwitchInputMethod.enable": true,
+    "vim.autoSwitchInputMethod.defaultIM": "0",
+    "vim.autoSwitchInputMethod.obtainIMCmd": "c:\\users\\nakagawa\\tool\\zenhan\\zenhan.exe 0",
+    "vim.autoSwitchInputMethod.switchIMCmd": "c:\\users\\nakagawa\\tool\\zenhan\\zenhan.exe {im}",
+    //airline
+    //"vim.statusBarColorControl": true,
+    //"vim.statusBarColors.normal": ["#14b856", "#000000"],
+    //"vim.statusBarColors.insert": ["#17c5ff", "#051823"],
+    //"vim.statusBarColors.visual": ["#ffba6b", "#000000"],
+    //"vim.statusBarColors.visualline": ["#ff6e42", "#00000"],
+    //"vim.statusBarColors.visualblock": ["#f6ff42", "#00000"],
+    //"vim.statusBarColors.replace": ["red", "#161821"],
+    //"vim.statusBarColors.commandlineinprogress": ["#818596", "#161821"],
+    //"vim.statusBarColors.searchinprogressmode": ["#818596", "#161821"],
+    //"vim.statusBarColors.easymotionmode": ["#818596", "#161821"],
+    //"vim.statusBarColors.easymotioninputmode": ["#818596", "#161821"],
+    //"vim.statusBarColors.surroundinputmode": ["#818596", "#161821"],
+    // terminal
+    //"terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+    //editor
+    "editor.renderControlCharacters": true,
+    "editor.renderWhitespace": "all",
+    "editor.fontFamily": "HackGen",
+    "editor.fontSize": 13,
+    "editor.tabSize": 2,
+    //editor color
+    "editor.tokenColorCustomizations": {
+        "comments": "#4dc8d0"
+    },
+    //
+    "workbench.settings.useSplitJSON": true,
+    "breadcrumbs.enabled": true,
+    "files.associations": {
+        "*.dcm": "vba"
+    },
+    "editor.suggestSelection": "first",
+    "editor.minimap.enabled": true,
+    "vsicons.dontShowNewVersionMessage": true,
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#14b856",
+        "statusBar.noFolderBackground": "#14b856",
+        "statusBar.debuggingBackground": "#14b856",
+        "statusBar.foreground": "#000000",
+        "statusBar.debuggingForeground": "#000000"
+    },
+    "workbench.iconTheme": "vscode-icons",
+    "markdown-pdf.outputDirectory": ".\\ref",
+    "markdown-pdf.styles": ["C:\\Users\\nakagawa\\.vscode\\pdfmdStyle.css"],
+    "markdown-pdf.stylesRelativePathFile": true,
+	"markdown.extension.orderedList.marker": "one",
+
+
+    //arduino
+    "C_Cpp.intelliSenseEngine": "Tag Parser",
+    "editor.cursorStyle": "line",
+    "editor.lineNumbers": "on",
+    "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
+    "editor.wordWrap": "off",
+    "powershell.powerShellDefaultVersion": "PowerShell (x64)",
+    "security.workspace.trust.untrustedFiles": "open",
+    //"arduino.commandPath": "C:\\Program Files (x86)\\Arduino"
+    "terminal.integrated.fontFamily": "HackGen35 Console NF",
+    "[markdown]": {
+        "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+    },
+    "oneDarkPro.markdownStyle": false,
+    "workbench.colorTheme": "Ice Blue",
+    "git.openRepositoryInParentFolders": "never",
+    "security.allowedUNCHosts": [
+        "hvfilesvr"
+    ],
+    "code-for-ibmi.connections": [
+
+        {
+            "name": "kojima",
+            "host": "kojima.kdb.local",
+            "port": 22,
+            "username": "jomo"
+        }
+    ],
+    "code-for-ibmi.connectionSettings": [
+        {
+            "name": "kojima",
+            "host": "kojima.kdb.local",
+            "objectFilters": [
+                {
+                    "name": "JOMOVSCODE",
+                    "filterType": "simple",
+                    "library": "JOMOVSCODE",
+                    "object": "*",
+                    "types": [
+                        "*SRCPF"
+                    ],
+                    "member": "*",
+                    "memberType": "*",
+                    "protected": false,
+                    "buttons": "SAVE"
+                },
+                {
+                    "name": "JOMOWEB",
+                    "filterType": "simple",
+                    "library": "JOMOWEBLIB",
+                    "object": "*",
+                    "types": [
+                        "*SRCPF"
+                    ],
+                    "member": "*",
+                    "memberType": "*",
+                    "protected": false,
+                    "buttons": "SAVE"
+                },
+                {
+                    "name": "JOMOLIB",
+                    "filterType": "simple",
+                    "library": "JOMOLIB",
+                    "object": "*",
+                    "types": [
+                        "*SRCPF"
+                    ],
+                    "member": "*",
+                    "memberType": "*",
+                    "protected": false,
+                    "buttons": "SAVE"
+                },
+                {
+                    "name": "SRCLIB",
+                    "filterType": "simple",
+                    "library": "SRCLIB",
+                    "object": "*",
+                    "types": [
+                        "*SRCPF"
+                    ],
+                    "member": "*",
+                    "memberType": "*",
+                    "protected": false
+                },
+                {
+                    "name": "CBF",
+                    "filterType": "simple",
+                    "library": "JOMOWEBLIB",
+                    "object": "*",
+                    "types": [
+                        "*SRCPF"
+                    ],
+                    "member": "CBF*",
+                    "memberType": "*",
+                    "protected": false,
+                    "buttons": "SAVE"
+                },
+                {
+                    "name": "DEVICE",
+                    "filterType": "simple",
+                    "library": "JOMOLIB",
+                    "object": "*",
+                    "types": [
+                        "*SRCPF"
+                    ],
+                    "member": "DV*",
+                    "memberType": "*",
+                    "protected": false,
+                    "buttons": "SAVE"
+                },
+                {
+                    "name": "S47__",
+                    "filterType": "simple",
+                    "library": "JOMOLIB",
+                    "object": "*",
+                    "types": [
+                        "*SRCPF"
+                    ],
+                    "member": "S47*",
+                    "memberType": "*",
+                    "protected": false,
+                    "buttons": "SAVE"
+                }
+            ],
+            "libraryList": [
+                "JOMOWEBLIB",
+                "JOMOLIB",
+                "DBLIB",
+                "PGMLIB",
+                "SRCLIB",
+                "QGPL",
+                "QTEMP",
+                "QEVX"
+            ],
+            "autoClearTempData": false,
+            "customVariables": [],
+            "connectionProfiles": [],
+            "commandProfiles": [],
+            "ifsShortcuts": [
+                "/home/JOMO"
+            ],
+            "autoSortIFSShortcuts": false,
+            "homeDirectory": "/home/JOMO",
+            "tempLibrary": "ILEDITOR",
+            "tempDir": "/tmp",
+            "currentLibrary": "JOMOLIB",
+            "sourceASP": "",
+            "sourceFileCCSID": "*FILE",
+            "autoConvertIFSccsid": false,
+            "hideCompileErrors": [],
+            "enableSourceDates": false,
+            "sourceDateMode": "diff",
+            "sourceDateGutter": false,
+            "encodingFor5250": "default",
+            "terminalFor5250": "default",
+            "setDeviceNameFor5250": false,
+            "connectringStringFor5250": "localhost",
+            "autoSaveBeforeAction": false,
+            "showDescInLibList": false,
+            "debugPort": "8005",
+            "debugSepPort": "8008",
+            "debugIsSecure": false,
+            "debugUpdateProductionFiles": false,
+            "debugEnableDebugTracing": false,
+            "readOnlyMode": false,
+            "quickConnect": true,
+            "defaultDeploymentMethod": "",
+            "protectedPaths": [],
+            "showHiddenFiles": true,
+            "lastDownloadLocation": "C:\\Users\\nakagawa",
+            "databaseBrowserList": [
+                "DBLIB",
+                "JOMOLIB",
+                "SQLDBLIB",
+                "SQLDEVLIB"
+            ],
+            "buttons": "save"
+        }
+    ],
+    "vscode-db2i.sqlFormat.identifierCase": "upper",
+    "vscode-db2i.alwaysStartSQLJob": "never",
+    "code-for-ibmi.ObjectBrowser.showNamesInLowercase": false,
+    "vscode-db2i.jobConfigs": {
+        "NormalJOB": {
+            "libraries": [
+                "JOMOLIB",
+                "JOMOWEBLIB",
+                "JOMOLIB",
+                "DBLIB",
+                "PGMLIB",
+                "SRCLIB",
+                "QGPL",
+                "QTEMP",
+                "QEVX"
+            ],
+            "naming": "system",
+            "full open": false,
+            "transaction isolation": "none",
+            "query optimize goal": "1",
+            "block size": "512",
+            "selfcodes": "*NONE"
+        }
+    },
+    "rest-client.previewOption": "exchange",
+    "rest-client.previewResponsePanelTakeFocus": false,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "markdown.extension.completion.enabled": true,
+    "markdown.extension.print.absoluteImgPath": false,
+    "errorLens.exclude": [
+        "[\"md\"]"
+    ],
+    "errorLens.gutterIconsEnabled": true,
+    "terminal.integrated.sendKeybindingsToShell": true,
+    "settingsSync.ignoredExtensions": [
+        "jebbs.plantuml"
+    ],
+    "plantuml.java": "C:\\jdk21\\bin\\java.exe",
+    "workbench.editor.enablePreview": false,
+    "plantuml.render": "PlantUMLServer",
+    "plantuml.server": "http://localhost:8080/",
+    "indentRainbow.indicatorStyle": "light",
+    "indentRainbow.lightIndicatorStyleLineWidth": 3
+}
