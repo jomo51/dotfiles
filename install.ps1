@@ -33,7 +33,7 @@ function New-SymlinkWithBackup {
   #親パスのチェックと再作成
   $parent = Split-Path -Parent $Link
     if (-not (Test-Path $parent)) {
-      New-Item -ItemType Directory -Path $Parent
+      New-Item -ItemType Directory -Path $parent
     }
 
   #リンク作成
@@ -55,16 +55,28 @@ New-SymlinkWithBackup -Link "$HOME\\.gitconfig" -Target "$env:DOTFILES_HOME\\git
 New-SymlinkWithBackup -Link "$HOME\\.gitignore_global" -Target "$env:DOTFILES_HOME\\git\\gitignore_global"
 
 # 3. Windows Terminal 設定のリンク＋背景画像コピー
-Write-Host "`n🎨 Setting up Windows Terminal config..."
 $wtPath = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState"
 $wtSettings = "$wtPath\settings.json"
 $dotfileWT = "$env:DOTFILES_HOME\windows_terminal\settings.json"
-New-SymlinkWithBackup -Link $wtSettings -Target $dotfileWT
 
 ## 背景画像コピー
-$assetsSource = "$env:DOTFILES_HOME\windows_terminal\assets\*"
-Copy-Item $assetsSource -Destination $wtPath -Force
+$assetsSource = "$env:DOTFILES_HOME\windows_terminal\assets"
+Copy-Item $assetsSource -Destination $wtPath -Force -Recurse
 Write-Host "🖼 Background images copied."
+
+## setting.json.templateの画像パス書き換え
+Write-Host "`n🎨 Setting up Windows Terminal config..."
+### テンプレートJSON読み込み
+$template = Get-Content "$env:DOTFILES_HOME\windows_terminal\settings.json.template" -Raw
+### 設定内容置換
+$pwshImage = Join-Path $wtPath "assets\\pwsh_150.png"
+$ubuntuImage = Join-Path $wtPath "assets\\ubuntu-logo-350.png"
+
+$template = $template -replace '\$pwshImagePath' , $pwshImage
+$template = $template -replace '\$ubuntuImagePath' , $ubuntuImage
+
+### 書き出し
+$template | Set-Content "$wtPath\settings.json" -Encoding utf8
 
 # 4. PowetShellプロファイル
 Write-Host "`n🧩 Linking PowerShell profile..."
@@ -116,8 +128,6 @@ if (-not (Get-Command nvim -ErrorAction SilentlyContinue)) {
 } else {
     $version = nvim --version | Select-String -Pattern "^NVIM v"
     Write-Host "✅ Neovim installed: $($version.Line)"
-}
-if (-not (Get-Command nvim -ErrorAction SilentlyContinue)) {
 }
 
 # 9. PSES: リリース板zipの取得と展開

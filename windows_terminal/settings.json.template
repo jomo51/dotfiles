@@ -65,7 +65,7 @@
             },
             {
                 //"backgroundImage": "assets\\pwsh_150.png",
-                "backgroundImage": "C:\\Users\\nakagawa\\AppData\\Local\\Packages\\Microsoft.WindowsTerminal_8wekyb3d8bbwe\\LocalState\\assets\\pwsh_150.png",
+                "backgroundImage": "$pwshImagePath",
                 "backgroundImageAlignment": "topRight",
                 "backgroundImageOpacity": 0.73,
                 "backgroundImageStretchMode": "none",
@@ -86,7 +86,7 @@
                 "source": "Windows.Terminal.Azure"
             },
             {
-                "backgroundImage": "C:\\Users\\nakagawa\\AppData\\Local\\Packages\\Microsoft.WindowsTerminal_8wekyb3d8bbwe\\LocalState\\assets\\ubuntu-logo-350.png",
+                "backgroundImage": "$ubuntuImagePath",
                 "backgroundImageAlignment": "topRight",
                 "backgroundImageOpacity": 0.74,
                 "backgroundImageStretchMode": "none",
