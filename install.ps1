@@ -68,7 +68,7 @@ Write-Host "🖼 Background images copied."
 
 # 4. PowetShellプロファイル
 Write-Host "`n🧩 Linking PowerShell profile..."
-$dotProfile = "$env:DOTFILES_HOME\\powershell\\Microsoft.PowerShell_profile.ps1"
+$dotProfile = "$env:DOTFILES_HOME\\powershell\\profile.ps1"
 New-SymlinkWithBackup -Link $PROFILE -Target $dotProfile
 
 # 5. oh-my-posh 確認とテーマファイルチェック
