@@ -172,7 +172,7 @@ $modules = @(
 )
 
 foreach ($m in $modules){
-  if (-not (Get-Module -ListAvailable - Name $m)) {
+  if (-not (Get-Module -ListAvailable -Name $m)) {
     Write-Host "📦 Installing $m..."
     Install-Module $m -Scope CurrentUser -Force
   } else {
