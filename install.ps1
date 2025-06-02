@@ -72,8 +72,11 @@ $template = Get-Content "$env:DOTFILES_HOME\windows_terminal\settings.json.templ
 $pwshImage = Join-Path $wtPath "assets\\pwsh_150.png"
 $ubuntuImage = Join-Path $wtPath "assets\\ubuntu-logo-350.png"
 
-$template = $template -replace '\$pwshImagePath' , $pwshImage
-$template = $template -replace '\$ubuntuImagePath' , $ubuntuImage
+$pwshImageEscaped = $pwshImage -replace '\\','\\\\'
+$ubuntuImageEscaped = $ubuntuImage -replace '\\','\\\\'
+
+$template = $template -replace '\$pwshImagePath' , $pwshImageEscaped
+$template = $template -replace '\$ubuntuImagePath' , $ubuntuImageEscaped
 
 ### 書き出し
 $template | Set-Content "$wtPath\settings.json" -Encoding utf8
@@ -106,16 +109,16 @@ New-SymlinkWithBackup -Link "$vsUserDir\\settings.json" -Target "$env:DOTFILES_H
 New-SymlinkWithBackup -Link "$vsUserDir\\keybindings.json" -Target "$env:DOTFILES_HOME\\vscode\\keybindings.json"
 
 # 7. VSCode 拡張の再インストール
-Write-Host "`n📦 Reinstalling VSCode extensions..."
-$extensionsFile = "$env:DOTFILES_HOME\\vscode\\extensions.txt"
-if (Test-Path $extensionsFile) {
-  Get-Content $extensionsFile | ForEach-Object {
-    code --install-extension $_
-  }
-  Write-Host "✅ Extensions installed."
-} else {
-  Write-Host "⚠️ No extensions.txt found."
-}
+##Write-Host "`n📦 Reinstalling VSCode extensions..."
+##$extensionsFile = "$env:DOTFILES_HOME\\vscode\\extensions.txt"
+##if (Test-Path $extensionsFile) {
+##  Get-Content $extensionsFile | ForEach-Object {
+##    code --install-extension $_
+##  }
+##  Write-Host "✅ Extensions installed."
+##} else {
+##  Write-Host "⚠️ No extensions.txt found."
+##}
 
 # 8. Neovimインストールチェック
 Write-Host "`n💡 Checking Neovim installation..."
