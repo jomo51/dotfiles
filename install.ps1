@@ -156,5 +156,29 @@ if (-not (Test-Path "$psesTarget\\PowerShellEditorServices.psd1")) {
     Write-Host "✅ PowerShellEditorServices already present."
 }
 
+#10. PWSHのインストールモジュール
+Write-Host "`n📦 Checking required PowerShell modules..."
+
+## NuGetプロバイダーの有無
+if (-not (Get-PackageProvider -Name NuGet -ErrorAction SilentlyContinue)) {
+  Install-PackageProvider -Name NuGet -Force
+  Write-Host "✅ NuGet provider installed."
+}
+
+## 各モジュール
+$modules = @{
+  "Zlocation",
+  "terminal-icons"
+}
+
+foreach ($m in $modules){
+  if (-not (Get-Module -ListAvailable - Name $m)) {
+    Write-Host "📦 Installing $m..."
+    Install-Module $m -Scope CurrentUser -Force
+  } else {
+    Write-Host "✅ $m already installed."
+  }
+}
+
 Write-Host "`n✅ dotfiles setup complete!`n"
 
