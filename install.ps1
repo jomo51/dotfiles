@@ -23,20 +23,20 @@ function New-SymlinkWithBackup {
       [string] $Link
       )
 
-    //パスのチェックとバックアップ
+    #パスのチェックとバックアップ
     if (Test-Path $Link) {
       $backupPath = "$Link.bak"
         Rename-Item -Path $Link -NewName $backupPath -Force
         Write-Host "🗂 Backup created: $backupPath"
     }
 
-  //親パスのチェックと再作成
+  #親パスのチェックと再作成
   $parent = Split-Path -Parent $Link
     if (-not (Test-Path $parent)) {
       New-Item -ItemType Directory -Path $Parent
     }
 
-  //リンク作成
+  #リンク作成
   New-Item -ItemType SymbolicLink -Path $Link -Target $Target -Force
     Write-Host "🔗 Linked: $Link → $Target" 
 }
