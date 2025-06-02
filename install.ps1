@@ -166,10 +166,10 @@ if (-not (Get-PackageProvider -Name NuGet -ErrorAction SilentlyContinue)) {
 }
 
 ## 各モジュール
-$modules = @{
-  "Zlocation",
+$modules = @(
+  "Zlocation" ,
   "terminal-icons"
-}
+)
 
 foreach ($m in $modules){
   if (-not (Get-Module -ListAvailable - Name $m)) {
