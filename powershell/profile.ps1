@@ -38,4 +38,4 @@ Import-Module -Name Microsoft.WinGet.CommandNotFound
 Import-Module -Name ZLocation
 
 #gsudo登録
-fucntion sudo {gsudo $args}
+function sudo {gsudo $args}
