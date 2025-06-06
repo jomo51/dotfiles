@@ -36,3 +36,6 @@ oh-my-posh init pwsh --config $env:POSH_THEMES_PATH/quick-term.omp.json | Invoke
 Import-Module -Name Microsoft.WinGet.CommandNotFound
 
 Import-Module -Name ZLocation
+
+#gsudo登録
+fucntion sudo {gsudo $args}
