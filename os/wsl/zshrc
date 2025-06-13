@@ -61,7 +61,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 # =========================
 # Editor
 # =========================
-#export EDITOR=nvim
+export EDITOR=nvim
 
 # =========================
 # zoxide
