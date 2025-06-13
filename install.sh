@@ -14,7 +14,16 @@ mkdir -p "$CFG"
 ln -sf "$DOT/xdg_config/starship.toml" "$CFG/starship.toml"
 
 # nvim config をリンク（まるごと）
-ln -sf "$DOT/xdg_config/nvim" "$CFG/nvim"
+# リンクがすでにあるなら貼り直し、ディレクトリならスキップ
+if [ -L "$CFG/nvim" ]; then
+  echo "🔁 Updating symlink: $CFG/nvim"
+  rm "$CFG/nvim"
+  ln -s "$DOT/xdg_config/nvim" "$CFG/nvim"
+elif [ -d "$CFG/nvim" ]; then
+  echo "⚠️ $CFG/nvim is a directory. Skipping symlink to avoid overwriting."
+else;
+  ln -s "$DOT/xdg_config/nvim" "$CFG/nvim"
+fi
 
 # Git 設定をリンク
 ln -sf "$DOT/git/gitconfig" "$HOME/.gitconfig"
