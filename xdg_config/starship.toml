@@ -1,0 +1,64 @@
+# シンプル＆構造的なプロンプト構成
+format = """
+$username$hostname$directory$git_branch$git_status$nodejs$python$rust
+$character
+"""
+
+# プロンプト記号（>）のスタイル
+[character]
+success_symbol = "[>](bold green)"
+error_symbol = "[✖](bold red)"
+
+# ユーザー名（rootだけ強調）
+[username]
+style_user = "bold yellow"
+style_root = "bold red"
+show_always = false
+
+# ホスト名（基本は非表示）
+[hostname]
+style = "dimmed white"
+ssh_only = true
+
+# カレントディレクトリ表示
+[directory]
+style = "bold cyan"
+truncate_to_repo = true  # Gitリポジトリ内ではルートから表示
+truncation_length = 3    # ディレクトリ名3階層まで表示
+
+# Gitブランチ
+[git_branch]
+symbol = "🌿 "
+style = "bold green"
+
+# Gitステータス（変更あり・コミット待ち）
+[git_status]
+style = "red"
+conflicted = "⚠️ "
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕"
+untracked = "🟡 "
+stashed = "📦 "
+modified = "✏️ "
+staged = "🟢 "
+renamed = "🔁 "
+deleted = "🗑️ "
+
+# Node.js バージョン表示（必要なときだけ）
+[nodejs]
+symbol = "⬢ "
+style = "bold green"
+disabled = false
+
+# Python バージョン表示
+[python]
+symbol = "🐍 "
+style = "bold yellow"
+python_binary = "python3"
+
+# Rust バージョン表示
+[rust]
+symbol = "🦀 "
+style = "bold red"
+
