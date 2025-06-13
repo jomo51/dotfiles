@@ -21,7 +21,7 @@ if [ -L "$CFG/nvim" ]; then
   ln -s "$DOT/xdg_config/nvim" "$CFG/nvim"
 elif [ -d "$CFG/nvim" ]; then
   echo "⚠️ $CFG/nvim is a directory. Skipping symlink to avoid overwriting."
-else;
+else
   ln -s "$DOT/xdg_config/nvim" "$CFG/nvim"
 fi
 
