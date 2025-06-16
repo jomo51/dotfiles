@@ -1,64 +1,79 @@
-# シンプル＆構造的なプロンプト構成
+# ▶ 2行プロンプトスタイル
+add_newline = true
+
+# ▶ 右プロンプトに時刻・処理時間・エラーコード
+right_format = """$status$cmd_duration$time"""
+
+# ▶ 各モジュールの順番と表示内容（必要最低限に抑えて洗練）
 format = """
-$username$hostname$directory$git_branch$git_status$nodejs$python$rust
+$username$hostname$directory$git_branch$git_status
 $character
 """
 
-# プロンプト記号（>）のスタイル
+# ▶ ユーザー名（通常ユーザーと root で色分け）
+[username]
+style_user = "bold cyan"
+style_root = "bold bg:red white"
+format = "[$user]($style) "
+show_always = true
+
+# ▶ ホスト名（省略可能・複数環境で作業するなら便利）
+[hostname]
+ssh_only = false
+style = "dim white"
+format = "on [$hostname]($style) "
+
+# ▶ ディレクトリ表示
+[directory]
+style = "bold blue"
+truncate_to_repo = false
+truncation_length = 3
+format = "in [$path]($style) "
+
+# ▶ Gitブランチ
+[git_branch]
+symbol = " "
+format = "[$symbol$branch]($style) "
+style = "bold purple"
+
+# ▶ Gitステータス
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style))'
+style = "bold fg:yellow"
+conflicted = "⚔️ "
+ahead     = "⇡${count}"
+behind    = "⇣${count}"
+diverged  = "⇕⇡${ahead_count}⇣${behind_count}"
+up_to_date= "✓"
+untracked = "[?${count}](bold red)"
+stashed   = "📦${count}"
+modified  = "[~${count}](bold yellow)"
+staged    = "[+${count}](bold green)"
+deleted   = "[✘${count}](bold red)"
+
+# ▶ プロンプト記号
 [character]
 success_symbol = "[>](bold green)"
-error_symbol = "[✖](bold red)"
+error_symbol   = "[>](bold red)"
+format         = "$symbol"
 
-# ユーザー名（rootだけ強調）
-[username]
-style_user = "bold yellow"
-style_root = "bold red"
-show_always = false
+[character.root]
+success_symbol = "[#](bold red)"
+error_symbol   = "[#](bold red)"
 
-# ホスト名（基本は非表示）
-[hostname]
-style = "dimmed white"
-ssh_only = true
+# ▶ コマンド実行時間（500ms以上で表示）
+[cmd_duration]
+min_time = 500
+format = " [⚡ $duration](bold yellow)"
 
-# カレントディレクトリ表示
-[directory]
-style = "bold cyan"
-truncate_to_repo = true  # Gitリポジトリ内ではルートから表示
-truncation_length = 3    # ディレクトリ名3階層まで表示
-
-# Gitブランチ
-[git_branch]
-symbol = "🌿 "
-style = "bold green"
-
-# Gitステータス（変更あり・コミット待ち）
-[git_status]
-style = "red"
-conflicted = "⚠️ "
-ahead = "⇡${count}"
-behind = "⇣${count}"
-diverged = "⇕"
-untracked = "🟡 "
-stashed = "📦 "
-modified = "✏️ "
-staged = "🟢 "
-renamed = "🔁 "
-deleted = "🗑️ "
-
-# Node.js バージョン表示（必要なときだけ）
-[nodejs]
-symbol = "⬢ "
-style = "bold green"
+# ▶ ステータスコード（エラー時のみ）
+[status]
 disabled = false
+format = '[✖ $status](bold red) '
 
-# Python バージョン表示
-[python]
-symbol = "🐍 "
-style = "bold yellow"
-python_binary = "python3"
-
-# Rust バージョン表示
-[rust]
-symbol = "🦀 "
-style = "bold red"
+# ▶ 時刻表示
+[time]
+disabled = false
+time_format = "%H:%M:%S"
+format = '[🕒 $time](dim white)'
 
