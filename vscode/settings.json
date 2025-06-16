@@ -190,6 +190,7 @@
                 }
             ],
             "libraryList": [
+                "JOMOVSCODE",
                 "JOMOWEBLIB",
                 "JOMOLIB",
                 "DBLIB",
