@@ -47,9 +47,9 @@ setopt histignorealldups share_history hist_ignore_all_dups hist_reduce_blanks i
 # =========================
 # Alias
 # =========================
+alias ll='eza --icons -lgh'
+alias la='eza --icons -lgha'
 alias ls='ls --color=auto'
-alias ll='ls -l'
-alias la='ls -A'
 alias l='ls -CF'
 alias h='fc -lt "%F %T" 1'
 
