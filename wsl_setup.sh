@@ -32,26 +32,27 @@ sudo apt install -y \
   build-essential \
   fzf \
   ripgrep \
-  fd-fine \
-  zoxide \
-  starship \
+  fd-find \
   bat \
-  jq \
-  pandoc \
-  fonts-powerline
+  zoxide \
+  pandoc
 
 #----------
-# 4. 手動インストール系 (例. eza)
+# 4. 手動インストール系
 #         -----------..
+
+echo "🔧 Installing starship"
+curl -sS https://starship.rs/install.sh | sh -s -- -y
+
 echo "🔧 Installing eza"
 EZA_URL="https://github.com/eza-community/eza/releases/latest/download/eza_x86_64-unknown-linux-gnu.zip"
 curl -LO "$EZA_URL"
-unzip eza_*.zip
+unzip -o eza_*.zip
 sudo mv eza /usr/local/bin/
 rm eza_*.zip
 
 #----------
-# 4. 手動インストール系 (例. eza)
+# 5. dotfile展開
 #         -----------..
 echo "🎛️ Running dotfiles install script"
 cd ~/dotfiles
