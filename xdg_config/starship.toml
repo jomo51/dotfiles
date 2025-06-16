@@ -1,0 +1,79 @@
+# ▶ 2行プロンプトスタイル
+add_newline = true
+
+# ▶ 右プロンプトに時刻・処理時間・エラーコード
+right_format = """$status$cmd_duration$time"""
+
+# ▶ 各モジュールの順番と表示内容（必要最低限に抑えて洗練）
+format = """
+$username$hostname$directory$git_branch$git_status
+$character
+"""
+
+# ▶ ユーザー名（通常ユーザーと root で色分け）
+[username]
+style_user = "bold cyan"
+style_root = "bold bg:red white"
+format = "[$user]($style) "
+show_always = true
+
+# ▶ ホスト名（省略可能・複数環境で作業するなら便利）
+[hostname]
+ssh_only = false
+style = "dim white"
+format = "on [$hostname]($style) "
+
+# ▶ ディレクトリ表示
+[directory]
+style = "bold blue"
+truncate_to_repo = false
+truncation_length = 3
+format = "in [$path]($style) "
+
+# ▶ Gitブランチ
+[git_branch]
+symbol = " "
+format = "[$symbol$branch]($style) "
+style = "bold purple"
+
+# ▶ Gitステータス
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style))'
+style = "bold fg:yellow"
+conflicted = "⚔️ "
+ahead     = "⇡${count}"
+behind    = "⇣${count}"
+diverged  = "⇕⇡${ahead_count}⇣${behind_count}"
+up_to_date= "✓"
+untracked = "[?${count}](bold red)"
+stashed   = "📦${count}"
+modified  = "[~${count}](bold yellow)"
+staged    = "[+${count}](bold green)"
+deleted   = "[✘${count}](bold red)"
+
+# ▶ プロンプト記号
+[character]
+success_symbol = "[>](bold green)"
+error_symbol   = "[>](bold red)"
+format         = "$symbol"
+
+[character.root]
+success_symbol = "[#](bold red)"
+error_symbol   = "[#](bold red)"
+
+# ▶ コマンド実行時間（500ms以上で表示）
+[cmd_duration]
+min_time = 500
+format = " [⚡ $duration](bold yellow)"
+
+# ▶ ステータスコード（エラー時のみ）
+[status]
+disabled = false
+format = '[✖ $status](bold red) '
+
+# ▶ 時刻表示
+[time]
+disabled = false
+time_format = "%H:%M:%S"
+format = '[🕒 $time](dim white)'
+
