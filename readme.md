@@ -1,24 +1,72 @@
-# dotfiles
+# dotfiles for WSL and PWSH
 
-Widnows用環境構築
+WSLの設定とTerminalの設定とPWSHの設定、、、、
 
-## セットアップ方法
+## 対応環境と機能概要
 
-- 以下のアプリは必須
+- WSL(Ubuntu22.04) Zsh/Starship/Neovim
+- PWSH(7~) Vscode/terminal/neovim
 
-    - Windows Terminal
-    - VSCode
-    - pwsh7~
-    - git
+## WSL,pwsh共用として設定されるもの
 
-1. pwshを管理権限で実行
-```powershell
-git clone https://github.com/jomo51/dotfiles.git $HOME/dotfiles
+- nvim  <- 複雑・重要
+- gitconfig類
+
+## WSL セットアップ
+
+### 前提条件
+
+- ubuntu22.04(LTS)
+- WSL2
+
+### インストール手順
+
+1. リポジトリクローン
+
+```bash
+git clont https://github.com/jomo51/dofiles.git ~/dotfiles
+```
+
+2. install.shでリンクを作成
+
+```bash
+./install.sh
+```
+
+3. (option)初期設定時は環境導入
+
+```bash
+./wsl_setup.sh
+```
+
+### 自動設定される内容
+
+
+
+## pwsh セットアップ
+
+### 前提条件
+
+以下のアプリは必須
+
+- WindowsTerminal
+- VSCode
+- pwsh 7 以降
+- Git
+
+### インストール手順
+
+** ソフトリンクを貼るので必ず管理権限で実行すること**
+
+PWSHで以下を実行
+
+```pwsh
+git clone https://github.com/yourname/dotfiles.git $HOME/dotfiles
 cd $HOME/dotfiles
 ./install.ps1
 ```
 
-1. 以下の環境が自動セットアップ
+### 自動設定される内容
 
 - Git設定 (メールアドレスとかは自身で設定すること)
 - Powershellプロファイルとoh-my-posh
@@ -28,35 +76,67 @@ cd $HOME/dotfiles
 - PowershellEditorService(v4.3.0)の取得
 - PowerShellモジュール
 
-1. ディレクトリ構成
+## 補足：NVIMの構成と運用について
+
+- WSL/pwshで共通設定(`xdg_config/nvim/`)
+- init.luaがエントリーポイント
+- プラグイン管理はLazyで
+- プロファイルはディレクトリ構成
+- pwshでの実行はpwsh対応のLSPも読み込む(`Plugins/lsp/powershell.lua`)
+- WSLのneovimはppaを追加して最新版をapt
+- pwshでは`install.ps1`でなければ導入。WSLでは`wsl_setup.sh`に含まれる
+
+## 補足：ディレクトリ構成(抜粋)
 
 ```text
 dotfiles/
+├── install.sh                  # WSL用セットアップスクリプト
+├── install.ps1                # Windows PowerShell用セットアップスクリプト
+├── wsl_setup.sh               # WSL初期構築用スクリプト
 ├── git/
 │   ├── gitconfig
 │   └── gitignore_global
+├── os/
+│   └── wsl/
+│       ├── zshrc
+│       └── zshrc.bkp_default
 ├── powershell/
 │   ├── profile.ps1
 │   └── theme.omp.json
 ├── vscode/
-│   ├── settings.json
+│   ├── extensions.txt
 │   ├── keybindings.json
-│   └── extensions.txt
+│   └── settings.json
 ├── windows_terminal/
-│   ├── settings.json.template
-│   └── assets/
-└── tools/
-    └── PSES/
+│   ├── assets/
+│   └── settings.json.template
+├── tools/
+│   └── PSES/   #<-このディレクトリはPWSHのみでignoreされている
+└── xdg_config/
+    ├── starship.toml
+    ├── gh/
+    ├── nvim/
+    │   ├── init.lua
+    │   └── lua/
+    │       ├── config/
+    │       ├── core/
+    │       ├── plugins/
+    │       └── user/
+    └── rest-client/
 ```
 
 ## 注意事項
 
-- WindowsTerminalだけはテンプレートから動的にパスを書き換え
-    - 背景画像が存在しない場合、表示に失敗する
+- WindowsTerminalではsetting.json.templateをベースにユーザー環境に合わせたパスを動的に書き換え
+    - 背景画像が存在しない場合は失敗するかも
 
-- PowerShellモジュールはInstall-Moduleで自動インストール
+- starshipはaptではなく手動インストール
 
-- シンボリックリンクを使う
+- Neovimの設定はlazy.nvimでWSL/pwsh共通構成
 
-- リンク作成前にバックアップ(.bak)を作成する。。。。たぶん
+- リンク作成前にバックアップを作成する。。。。多分
+
+## TODO
+
+- toolsの整理と統合運用
 
