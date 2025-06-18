@@ -15,7 +15,7 @@ sudo sed -i.bak 's|http://.*.ubuntu.com|http://ftp.jaist.ac.jp|g' /etc/apt/sourc
 echo "📦 Adding Neovim PPA"
 sudo apt update
 sudo apt install -y software-properties-common
-sudo add-apt-repository -y ppa:neovim-ppa/stable
+sudo add-apt-repository -y ppa:neovim-ppa/unstable
 
 #----------
 # 3. 必要なAPTパッケージ
