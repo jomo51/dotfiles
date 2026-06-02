@@ -26,7 +26,7 @@ set-alias -Name d -Value docker
 #Invoke-Expression (&starship init powershell)
 
 #oh-my-posh
-oh-my-posh init pwsh --config $env:POSH_THEMES_PATH/quick-term.omp.json | Invoke-Expression 
+oh-my-posh init pwsh --config $env:XDG_CONFIG_HOME/oh-my-posh/themes/blue-owl.omp.json | Invoke-Expression 
 
 #文字コード関係
 [System.Console]::OutputEncoding = [System.Text.Encoding]::GetEncoding("utf-8")
