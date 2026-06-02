@@ -43,11 +43,11 @@
           ],
           "foreground": "#000000",
           "powerline_symbol": "\ue0b0",
-          "options": {
+          "properties": {
             "fetch_status": true
           },
           "style": "powerline",
-          "template": " {{ .HEAD }}{{ if .Staging.Changed }}<#FF6F00> \uf046 {{ .Staging.String }}</>{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} ",
+          "template": " {{ .HEAD }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} ",
           "type": "git"
         },
         {
@@ -114,7 +114,7 @@
           },
           "style": "plain",
           "template": "\u276f ",
-          "type": "status"
+          "type": "text"
         }
       ],
       "type": "prompt"
