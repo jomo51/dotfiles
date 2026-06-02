@@ -3,6 +3,7 @@
   "blocks": [
     {
       "alignment": "left",
+      "newline": true,
       "segments": [
         {
           "background": "#a313a8",
@@ -12,26 +13,44 @@
           "type": "root"
         },
         {
-          "background": "transparent",
-          "foreground": "#ffffff",
-          "style": "plain",
-          "template": "{{ if .WSL }}WSL at {{ end }}{{.Icon}} ",
-          "type": "os"
-        },
-        {
           "background": "#01579B",
           "foreground": "#ffffff",
-          "leading_diamond": "<transparent,#01579B>\ue0b0</>",
-          "options": {
-            "folder_icon": "...",
-            "folder_separator_icon": "<transparent> \ue0bd </>",
-            "home_icon": "\ueb06",
-            "style": "agnoster_short"
+          "properties": {
+            "folder_icon": "..",
+            "style": "agnoster_full"
           },
           "style": "diamond",
-          "template": " {{ .Path }} ",
+          "template": " \uf07b  {{ .Path }} ",
           "trailing_diamond": "\ue0b0",
           "type": "path"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "background": "#5E35B1",
+          "foreground": "#ffffff",
+          "style": "diamond",
+          "template": " \ue65d  {{ .RepoName }} ",
+          "trailing_diamond": "\ue0b0",
+          "type": "git",
+          "properties": {
+          }
+        },
+        {
+          "background": "#5E35B1",
+          "foreground": "#ffffff",
+          "style": "diamond",
+          "template": " {{.RelativeDir}} ",
+          "trailing_diamond": "\ue0b0",
+          "leading_diamond": "<transparent,#5E35B1>\ue0b0</>",
+          "type": "git",
+          "properties": {
+          }
         },
         {
           "background": "#00C853",
@@ -79,17 +98,8 @@
       "segments": [
         {
           "background": "#29315A",
-          "foreground": "#43CCEA",
-          "leading_diamond": "\ue0c5",
-          "trailing_diamond": "\ue0bc",
-          "style": "diamond",
-          "template": "  {{ .UserName }}<transparent> / </>{{ .HostName }} ",
-          "type": "session"
-        },
-        {
-          "background": "#29315A",
           "foreground": "#3EC669",
-          "options": {
+          "properties": {
             "time_format": "15:04:05"
           },
           "leading_diamond": "\ue0ba",
@@ -109,7 +119,7 @@
           "foreground_templates": [
             "{{ if gt .Code 0 }}#ff0000{{ end }}"
           ],
-          "options": {
+          "properties": {
             "always_enabled": true
           },
           "style": "plain",
@@ -121,5 +131,6 @@
     }
   ],
   "console_title_template": "{{if .Root}} \u26a1 {{end}}{{.Folder | replace \"~\" \"🏚\" }} @ {{.HostName}}",
+  "final_space": true,
   "version": 4
 }
